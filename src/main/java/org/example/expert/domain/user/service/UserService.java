@@ -34,6 +34,10 @@ public class UserService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new InvalidRequestException("User not found"));
 
+        /*
+        todo: 비밀번호가 같은지, 아니면 다른지에 대한 예외처리가 둘 다 적용되어 있음,
+         순서가 이게 맞는가? 그리고 이렇게 작성하는 게 맞는가? 확인필요.
+         */
         if (passwordEncoder.matches(userChangePasswordRequest.getNewPassword(), user.getPassword())) {
             throw new InvalidRequestException("새 비밀번호는 기존 비밀번호와 같을 수 없습니다.");
         }
