@@ -38,6 +38,7 @@ public class WeatherClient {
 
         String today = getCurrentDate();
 
+        //for문과 if문 사이의 정리가 가능한 지 체크 필요.
         for (WeatherDto weatherDto : weatherArray) {
             if (today.equals(weatherDto.getDate())) {
                 return weatherDto.getWeather();
