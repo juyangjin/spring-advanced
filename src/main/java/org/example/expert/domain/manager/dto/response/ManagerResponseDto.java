@@ -6,9 +6,8 @@ import org.example.expert.domain.user.dto.response.UserResponse;
 
 @Getter
 @AllArgsConstructor
-public class ManagerResponse {
+public class ManagerResponseDto {
 
-    private final Long id;
-    private final UserResponse user;
-
+  private final Long id;
+  private final UserResponse user;
 }

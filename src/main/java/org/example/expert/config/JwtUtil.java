@@ -22,11 +22,10 @@ public class JwtUtil {
 
     private static final String BEARER_PREFIX = "Bearer ";
     private static final long TOKEN_TIME = 60 * 60 * 1000L; // 60분
-
+    private final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
     @Value("${jwt.secret.key}")
     private String secretKey;
     private Key key;
-    private final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
     @PostConstruct
     public void init() {
@@ -34,7 +33,11 @@ public class JwtUtil {
         key = Keys.hmacShaKeyFor(bytes);
     }
 
-    public String createToken(Long userId, String email, UserRole userRole) {
+    public String createToken(
+            Long userId,
+            String email,
+            UserRole userRole
+    ) {
         Date date = new Date();
 
         return BEARER_PREFIX +
@@ -48,14 +51,18 @@ public class JwtUtil {
                         .compact();
     }
 
-    public String substringToken(String tokenValue) {
+    public String substringToken(
+            String tokenValue
+    ) {
         if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
             return tokenValue.substring(7);
         }
         throw new ServerException("토큰이 존재하지 않습니다.");
     }
 
-    public Claims extractClaims(String token) {
+    public Claims extractClaims(
+            String token
+    ) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()

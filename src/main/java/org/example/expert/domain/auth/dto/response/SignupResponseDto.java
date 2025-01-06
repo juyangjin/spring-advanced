@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class SignupResponse {
-    private final String bearerToken;
+public class SignupResponseDto {
 
+  private final String bearerToken;
 }

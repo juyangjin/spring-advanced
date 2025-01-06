@@ -7,7 +7,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public class WeatherDto {
 
-    private final String date;
-    private final String weather;
-
+  private final String date;
+  private final String weather;
 }

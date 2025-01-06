@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class UserSaveResponse {
-    private final String bearerToken;
 
+  private final String bearerToken;
 }

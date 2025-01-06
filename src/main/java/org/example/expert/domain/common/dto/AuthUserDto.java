@@ -6,8 +6,8 @@ import org.example.expert.domain.user.enums.UserRole;
 
 @Getter
 @AllArgsConstructor
-public class AuthUser {
-    private final Long id;
-    private final String email;
-    private final UserRole userRole;
+public class AuthUserDto {
+  private final Long id;
+  private final String email;
+  private final UserRole userRole;
 }
