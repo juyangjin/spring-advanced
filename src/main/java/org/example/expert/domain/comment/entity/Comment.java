@@ -13,25 +13,27 @@ import org.example.expert.domain.user.entity.User;
 @Table(name = "comments")
 public class Comment extends Timestamped {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String contents;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+  private String contents;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "todo_id", nullable = false)
-    private Todo todo;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id", nullable = false)
+  private User user;
 
-    public Comment(String contents, User user, Todo todo) {
-        this.contents = contents;
-        this.user = user;
-        this.todo = todo;
-    }
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "todo_id", nullable = false)
+  private Todo todo;
 
-    public void update(String contents) {
-        this.contents = contents;
-    }
+  public Comment(String contents, User user, Todo todo) {
+    this.contents = contents;
+    this.user = user;
+    this.todo = todo;
+  }
+
+  public void update(String contents) {
+    this.contents = contents;
+  }
 }
